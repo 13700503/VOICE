@@ -1,0 +1,685 @@
+using Syncfusion.Windows.Tools.Controls;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Media;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace WpfApp1
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            flag_s = false;
+            btn.Content = "disconected";
+            btn.PulseColor = new SolidColorBrush(System.Windows.Media.Color.FromArgb(100, 255, 0, 0));
+            btn.ButtonBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(250, 255, 0, 0));
+            btn.ButtonHighlightBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(250, 255, 0, 0));
+            btn.ButtonPressedBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(250, 255, 0, 0));
+
+
+        }
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }// کدی که باید در صورت کلیک بر روی پنجره اجرا شود
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // کدی که باید در صورت کلیک بر روی دکمه اجرا شود
+        }
+
+        bool flag_s;
+        public List<string> exceptions;
+        public List<string> liplay;
+        private void btn_Click(object sender, RoutedEventArgs e)
+        {
+            lpo = new List<playlist>();
+         
+            liplay = new List<string>();
+
+            liblock = new List<string>();
+            if (MSI1.IsChecked == true) liplay.Add("4097");//setter[0]);//
+            if (MSI2.IsChecked == true) liplay.Add("4098");// setter[1] );//
+            if (MSI3.IsChecked == true) liplay.Add("4099");// setter[2]);//
+            if (MSI4.IsChecked == true) liplay.Add("4100");// setter[3]);//
+            if (MSI5.IsChecked == true) liplay.Add("4101");// setter[4]);//
+            if (MSI6.IsChecked == true) liplay.Add("4102");// setter[5]);//
+            if (MSI7.IsChecked == true) liplay.Add("4103");// setter[6]);//
+            if (MSI8.IsChecked == true) liplay.Add("4104");// setter[7]);//
+            if (MSI9.IsChecked == true) liplay.Add("4105");// setter[8]);//
+            if (MSI10.IsChecked == true) liplay.Add("4106");// setter[9]);//
+            if (MSI11.IsChecked == true) liplay.Add("4107");// setter[10]);//
+            if (MSI12.IsChecked == true) liplay.Add("4108");// setter[11]);//
+            if (MSI13.IsChecked == true) liplay.Add("4109");// setter[12]);//
+            if (MSI14.IsChecked == true) liplay.Add("4110");// setter[13]);//
+            if (MSI15.IsChecked == true) liplay.Add("4111");// setter[14]);//
+            if (MSI16.IsChecked == true) liplay.Add("4112");// setter[15]);//
+            if (MSI17.IsChecked == true) liplay.Add("4113");// setter[16]);//
+            if (MSI18.IsChecked == true) liplay.Add("4114");// setter[17]  );//
+            if (MSI19.IsChecked == true) liplay.Add("4115");// setter[18] );//
+            if (MSI20.IsChecked == true) liplay.Add("4116");// setter[19]);//
+            if (MSI21.IsChecked == true) liplay.Add("4117");// setter[20]);//
+            if (MSI22.IsChecked == true) liplay.Add("4118");// setter[21]);//
+            if (MSI23.IsChecked == true) liplay.Add("4119");// setter[22]);//
+            if (MSH1.IsChecked == true) liplay.Add("4353");//hatcher[0]);//
+            if (MSH2.IsChecked == true) liplay.Add("4354");// hatcher[1]);//
+            if (MSH3.IsChecked == true) liplay.Add("4355");// hatcher[2]);//
+            if (MSH4.IsChecked == true) liplay.Add("4356");// hatcher[3]);//
+            if (MSH5.IsChecked == true) liplay.Add("4357");// hatcher[4]);//
+            if (MSH6.IsChecked == true) liplay.Add("4358");// hatcher[5]);//
+            if (MSH7.IsChecked == true) liplay.Add("4359");// hatcher[6]);//
+            if (MSH8.IsChecked == true) liplay.Add("4360");// hatcher[7]);//
+            if (MSH9.IsChecked == true) liplay.Add("4361");// hatcher[8]);//
+            if (MSH10.IsChecked == true) liplay.Add("4362");// hatcher[9]);//
+            if (MSH11.IsChecked == true) liplay.Add("4363");// hatcher[10]);//
+            if (MSH12.IsChecked == true) liplay.Add("4364");// hatcher[11]);//
+            if (MSH13.IsChecked == true) liplay.Add("4365");// hatcher[12]);//
+            if (MSH14.IsChecked == true) liplay.Add("4366");// hatcher[13]);//
+            if (MSH15.IsChecked == true) liplay.Add("4367");// hatcher[14]);//
+            if (MSH16.IsChecked == true) liplay.Add("4368");// hatcher[15]);//
+            if (MSH17.IsChecked == true) liplay.Add("4369");// hatcher[16]);//
+            if (MSH18.IsChecked == true) liplay.Add("4370");// hatcher[17]);//
+            if (MSH19.IsChecked == true) liplay.Add("4371");// hatcher[18]);//
+            if (MSH20.IsChecked == true) liplay.Add("4372");// hatcher[19]);//
+            if (MSH21.IsChecked == true) liplay.Add("4373");// hatcher[20]);//
+            if (MSH22.IsChecked == true) liplay.Add("4374");// hatcher[21]);//
+            if (MSH23.IsChecked == true) liplay.Add("4375");// hatcher[22]
+
+            if (flag_s)
+            {
+                btn.Content = "disconected";
+                flag_s = false;
+
+
+                btn.PulseColor = new SolidColorBrush(System.Windows.Media.Color.FromArgb(100, 255, 0, 0));
+                btn.ButtonBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(250, 255, 0, 0));
+                btn.ButtonHighlightBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(250, 255, 0, 0));
+                btn.ButtonPressedBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(250, 255, 0, 0));
+
+
+
+                /* ButtonBrush = "MidnightBlue"
+                         ButtonHighlightBrush = "Blue"
+                         ButtonPressedBrush = "Green"*/
+                try
+                {
+                    flagp = false;
+                    t.Abort();
+                }
+                catch { }
+            }
+            else
+            {
+
+                btn.Content = "conected";
+
+                flag_s = true;
+                btn.PulseColor = new SolidColorBrush(System.Windows.Media.Color.FromArgb(100, 0, 255, 0));
+                btn.ButtonBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(250, 0, 255, 0));
+                btn.ButtonHighlightBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(250, 0, 255, 0));
+                btn.ButtonPressedBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(250, 0, 255, 0));
+
+
+                flagp = true;
+
+                t = new Thread(playSound);
+                t.Start();
+
+
+
+            }               
+        }
+        bool flagp;
+
+        Thread t;
+
+      
+        List<playlist> lp;
+        private void playSound()
+        {
+            lp = new List<playlist>();string name = "", bname = "", txt1 = ""; ;
+            List<string> l = new List<string>();
+            while (flagp)
+            {
+                DA da = new DA();
+                var a = da.Read();
+
+                //درسته
+                for (int i = 0; i < a.Count; i++)
+                {
+                    if (liplay.Where(x => x == Convert.ToString(a[i].Unit)).Count() > 0 || i == a.Count() - 1)
+                    {
+                        name = Convert.ToString(a[i].Unit);
+                        if (name != bname)
+                        {
+                            if (l.Count > 0 && liplay.Where(x => x == bname).Count() > 0)
+                                lp.Add(new playlist() { name = bname, alarms = l, text = txt1 });
+                            l = new List<string>();
+                            l.Add(Convert.ToString(a[i].AlarmType));
+                            txt1 = Convert.ToString(a[i].AlarmType);
+                        }
+                        else
+                        {
+                            l.Add(Convert.ToString(a[i].AlarmType));
+                            txt1 += Convert.ToString(a[i].AlarmType);
+                        }
+                        bname = name;
+                    }
+
+                }
+
+                if (lpo == null)
+                    lpo = new List<playlist>();
+
+                foreach (var item in lp)
+                {
+                    if (item.alarms.Count > 0)
+                    {
+
+                        if (item.alarms[0] != "11")
+                        {
+                            liblock.RemoveAll(x=>x==item.name);
+                        }
+                    }
+                    if (liblock.Where(x => x == item.name).Count() < 3)
+                    {
+                        if (lpo.Where(x => x.name == item.name).Count() > 0)
+                        {
+                            playlist p1 = lpo.Where(x => x.name == item.name).First();
+                            if (p1.text == item.text)
+                            {
+                                TimeSpan ts = System.DateTime.Now - p1.playtime;
+                                while (ts.TotalSeconds < 16)
+                                {
+                                    Thread.Sleep(1000);
+                                    ts = System.DateTime.Now - p1.playtime;
+                                }
+                            }
+                        }
+                        palyNotify();
+                        foreach (var item1 in item.alarms)
+
+                        {
+                            if (item1 == "11")
+                            {
+                                liblock.Add(item.name);
+                            }
+                            playAlarm(item1);
+                        }
+                        playeName(item.name);
+
+                        if (lpo.Where(x => x.name == item.name).Count() > 0)
+                        {
+                            lpo.Remove(lpo.Where(x => x.name == item.name).First());
+                        }
+                        playlist p = item;
+                        p.playtime = System.DateTime.Now;
+                        lpo.Add(p);
+                    }
+                }
+            }
+        }
+        List<playlist> lpo;
+        List<string> liblock;
+        private void palyNotify()
+        {
+            typewriter.SoundLocation = Environment.CurrentDirectory + @"\wav1\" + ("Notify" + ".wav").Trim();
+            typewriter.Play();
+            Thread.Sleep(1500);
+        }
+        private void playAlarm(string alarm)
+        {
+            string f = "";
+            switch (alarm) {
+                
+             case  "0":f="High Temperature";break;
+             case  "1":f="High Humidity";break;
+             case  "2":f="Low Temperature";break;
+             case  "3":f="Low Humidity";break;
+             case  "4":f="Dry Wick";break;
+             case  "5":f="Maintenance";break;
+             case  "6":f="Fan Failure";break;
+             case  "7":f="Door Open";break;
+             case "11": f="Communications";break;
+             case  "10":f = "Turn Failure";break;
+        }
+            typewriter.SoundLocation = Environment.CurrentDirectory + @"\wav1\" + (f + ".wav").Trim();
+            typewriter.Play();
+            Thread.Sleep(2000);
+        }
+        private void playeName(string name)
+        {
+          
+            string f = "";
+          int a=  Int32.Parse(name);
+            if(a>=4097 && a<=4119)
+            {
+              f=  "s" + (a - 4096).ToString();
+            }
+            if(a>= 4353 && a<= 4375)
+            {
+                f = "h" + (a - 4352).ToString();
+            }
+            typewriter.SoundLocation = Environment.CurrentDirectory + @"\wav1\" + (f + ".wav").Trim();
+            typewriter.Play();
+            Thread.Sleep(3000);
+        }
+
+        private void NewMethod()
+        {
+            
+            lioffline = new List<string>();
+
+            // string number_exceptions = Console.ReadLine();
+            //for (int i = 0; i < Convert.ToInt32(number_exceptions); i++)
+            //{
+            //    Console.WriteLine($"{ i + 1} Che chizi moaf shavad:");
+            //    exceptions.Add(Console.ReadLine());
+            //}
+
+
+            /*
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                if (dataGridView1.Rows[i].Cells[0].Value != null)
+                    if (dataGridView1.Rows[i].Cells[0].Value.ToString().Length > 0)
+                    {
+                        exceptions.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                    }
+            }
+            
+            */
+
+
+            // exceptions.Add(exception);
+
+
+            Voices voices = new Voices();
+            List<playlist> li = new List<playlist>();
+            int startplay = 1;
+            int endplay = -1;
+            string unit = "", beforunit = "";
+            string s = "";
+            Boolean isrepeat = false;
+            DateTime oldtime = System.DateTime.Now;
+            while (flagp)
+            {
+                //   textBox1.Clear();
+                DA da = new DA();
+                //   textBox1.AppendText("connect db \n");
+                var a = da.Read();
+                //foreach (Entity e in a)
+                //{
+                //    voices.playe_audio(Convert.ToString(e.Unit), Convert.ToString(e.AlarmType), exceptions);
+                //    Thread.Sleep(2000);
+                //}
+                int r = 0,e=0;
+                playlist p;
+                for (int i = 0; i < a.Count; i++)
+                {
+                    isrepeat = false;
+                   string  unit1 = Convert.ToString(a[i].Unit);
+                    if (liplay.Where(x => x == unit1).Count() > 0)
+                    {
+                        unit = Convert.ToString(a[i].Unit);
+                        if (endplay < 0)
+                            endplay = i;
+                        if (unit == beforunit)
+                        {
+                            s += Convert.ToString(a[i].AlarmType);
+                            e = i + 1; 
+                        }
+                        else
+                        {
+                                e = i + 1;
+
+                            startplay = endplay;
+                            endplay = i;
+
+                            if (li.Where(x => x.name == unit).Count() > 0)
+                            {
+                                p = li.Where(x => x.name == unit).First();
+                                if (p.text == s)
+                                {
+                                    isrepeat = true;
+                                    oldtime = p.playtime;
+                                }
+                                li.Remove(p);
+
+                            }
+                            
+                            beforunit = unit;
+                            s = Convert.ToString(a[i].AlarmType);
+
+                        }
+                       // System.IO.File.AppendAllText("test.txt", "\r\n" + unit + "  alarm:" + s + "    isrepeat:" + isrepeat + " listcount:" + li.Count.ToString());
+                        if (isrepeat && flagp)
+                        {
+                          //  System.IO.File.AppendAllText("test.txt", "\r\n" + unit + " " + System.DateTime.Now.ToLongTimeString());
+                            Boolean t = true;
+
+                            while (t)
+                            {
+                                Thread.Sleep(1000);
+                                TimeSpan ts = System.DateTime.Now - oldtime;
+                                if (ts.TotalSeconds > 16)
+                                {
+                                    t = false;
+                                    isrepeat = false;
+                                }
+                            }
+                           // System.IO.File.AppendAllText("test.txt", "\r\n" + unit + " " + System.DateTime.Now.ToLongTimeString());
+
+
+                        }
+                        string s1 = "";
+                        string u = "";
+                        for (int j = startplay; j < endplay; j++)
+                        {
+
+
+                            if (flagp)
+                            {
+                                u = Convert.ToString(a[j].Unit);
+                                s1 += Convert.ToString(a[j].AlarmType);
+                                //  System.IO.File.AppendAllText("test.txt", "\r\n" + "paly : " + Convert.ToString(a[j].Unit) + "  " + Convert.ToString(a[j].AlarmType) + " from " + startplay + " to " + endplay + "  j:" + j);
+                                System.IO.File.AppendAllText("test.txt", "\r\n" + unit + " s: " + System.DateTime.Now.ToLongTimeString());
+                                playe_audio(Convert.ToString(a[j].Unit), Convert.ToString(a[j].AlarmType), exceptions
+                                    , j + 1 < a.Count ? a[j + 1].Unit.ToString() : "-1", ref r, j > 0 ? Convert.ToString(a[j - 1].AlarmType) : "-1", j > 0 ? Convert.ToString(a[j - 1].Unit) : "-1");
+                                System.IO.File.AppendAllText("test.txt", "\r\n" + unit + "  e: " + System.DateTime.Now.ToLongTimeString());
+                            }   // Thread.Sleep(2000);
+                        }
+                        li.Add(new playlist() { name = u, text = s1, playtime = System.DateTime.Now });
+                    }
+                }
+                if (unit == beforunit)
+                {
+                    startplay = endplay;
+                    endplay = e;
+
+                    if (li.Where(x => x.name == unit).Count() > 0)
+                    {
+                        p = li.Where(x => x.name == unit).First();
+                        if (p.text == s)
+                        {
+                            isrepeat = true;
+                            oldtime = p.playtime;
+                        }
+                        li.Remove(p);
+
+                    }
+                               // System.IO.File.AppendAllText("test.txt", "\r\n" + unit + "  alarm:" + s + "    isrepeat:" + isrepeat + " listcount:" + li.Count.ToString());
+                    if (isrepeat && flagp)
+                    {
+                     //   System.IO.File.AppendAllText("test.txt", "\r\n" + unit + " " + System.DateTime.Now.ToLongTimeString());
+                        Boolean t = true;
+
+                        while (t)
+                        {
+                            Thread.Sleep(1000);
+                            TimeSpan ts = System.DateTime.Now - oldtime;
+                            if (ts.TotalSeconds > 16)
+                            {
+                                t = false;
+                                isrepeat = false;
+                            }
+                        }
+                       // System.IO.File.AppendAllText("test.txt", "\r\n" + unit + " " + System.DateTime.Now.ToLongTimeString());
+
+
+                    }
+                    string s1 = "";
+                    string u = "";
+                    for (int j = startplay; j < endplay; j++)
+                    {
+
+
+                        if (flagp)
+                        {
+                            u = Convert.ToString(a[j].Unit);
+                            s1 += Convert.ToString(a[j].AlarmType);
+                            //System.IO.File.AppendAllText("test.txt", "\r\n" + "paly : " + Convert.ToString(a[j].Unit) + "  " + Convert.ToString(a[j].AlarmType) + " from " + startplay + " to " + endplay + "  j:" + j);
+                            System.IO.File.AppendAllText("test.txt", "\r\n" + unit + " s: " + System.DateTime.Now.ToLongTimeString());
+                            playe_audio(Convert.ToString(a[j].Unit), Convert.ToString(a[j].AlarmType), exceptions
+                                , j + 1 < a.Count ? a[j + 1].Unit.ToString() : "-1", ref r, j > 0 ? Convert.ToString(a[j - 1].AlarmType) : "-1", j > 0 ? Convert.ToString(a[j - 1].Unit) : "-1");
+                            System.IO.File.AppendAllText("test.txt", "\r\n" + unit + " e:" + System.DateTime.Now.ToLongTimeString());
+                        }   // Thread.Sleep(2000);
+                    }
+                    li.Add(new playlist() { name = u, text = s1, playtime = System.DateTime.Now });
+
+                }
+                Thread.Sleep(1000);
+
+            }
+        }
+
+        string temp;
+        SoundPlayer typewriter = new SoundPlayer();
+
+        List<string> hatcher = new List<string>
+            { "h1","h2","h3","h4","h5"
+        ,"h6","h7","h8","h9","h10"
+        ,"h11","h12","h13","h14","h15"
+        ,"h16","h17","h18","h19","h20"
+        ,"h21","h22","h23"};
+
+        List<string> setter = new List<string>
+            {"s1","s2","s3","s4","s5"
+        ,"s6" ,"s7","s8","s9","s10"
+        ,"s11","s12","s13","s14","s15"
+        ,"s16" ,"s17","s18","s19","s20"
+        ,"s21","s22","s23"};
+        List<string> lioffline;
+
+        public string beforpalyname;
+        public DateTime befortime;
+        public void playe_audio(string name, string alarm, List<string> ex, string nextname, ref int r, string beforalarm, string beforname)
+        {
+
+            var component = new Dictionary<string, string>()
+            {
+                {"4097",setter[0]},
+                {"4098", setter[1] },
+             {    "4099", setter[2]},
+             {   "4100", setter[3]},
+              {  "4101", setter[4]},
+             {   "4102", setter[5]},
+              {  "4103", setter[6]},
+               { "4104", setter[7]},
+               { "4105", setter[8]},
+               { "4106", setter[9]},
+               { "4107", setter[10]},
+               { "4108", setter[11]},
+               { "4109", setter[12]},
+               { "4110", setter[13]},
+              {  "4111", setter[14]},
+               { "4112", setter[15]},
+              {  "4113", setter[16]},
+                {"4114", setter[17]  },
+               { "4115", setter[18] },
+               { "4116", setter[19]},
+               { "4117", setter[20]},
+               { "4118", setter[21]},
+               { "4119", setter[22]},
+              {  "4353",hatcher[0]},
+              {  "4354", hatcher[1]},
+              {  "4355", hatcher[2]},
+              {  "4356", hatcher[3]},
+              {  "4357", hatcher[4]},
+               { "4358", hatcher[5]},
+               { "4359", hatcher[6]},
+               { "4360", hatcher[7]},
+              {  "4361", hatcher[8]},
+              {  "4362", hatcher[9]},
+              {  "4363", hatcher[10]},
+              {  "4364", hatcher[11]},
+              {  "4365", hatcher[12]},
+              {  "4366", hatcher[13]},
+               { "4367", hatcher[14]},
+               { "4368", hatcher[15]},
+               { "4369", hatcher[16]},
+              {  "4370", hatcher[17]},
+               { "4371", hatcher[18]},
+               { "4372", hatcher[19]},
+               { "4373", hatcher[20]},
+              {  "4374", hatcher[21]},
+               { "4375", hatcher[22]}
+                                 };
+
+            var Alarms = new Dictionary<string, string>() {
+
+             { "0","High Temperature"},
+                {"1","High Humidity"},
+              { "2","Low Temperature"},
+               { "3","Low Humidity"},
+                { "4","Dry Wick"},
+                 { "5","Maintenance"},
+                  { "6","Fan Failure"},
+                   { "7","Door Open"},
+                {"11" ,"Communications"},
+                {  "10","Turn Failure"}
+            };
+            if (lioffline.Where(x => x == name).Count() > 2)
+            {
+                return;
+            }
+
+            //ok
+            foreach (var item in component)
+            {
+                //int q = (from i in ex where item.Value == i select i).Count();
+                //if (q > 0) { return; }
+
+                if (item.Key == name)
+                    foreach (var item2 in ex)
+                    {
+                        if (item2 == item.Value)
+                        {
+
+                            return;
+                        }
+                    }
+            }
+
+            if (name != beforname)
+            {
+                typewriter.SoundLocation = Environment.CurrentDirectory + @"\wav1\" + ("Notify" + ".wav").Trim();
+                typewriter.Play();
+                Thread.Sleep(1500);
+                foreach (var item in component)
+                {
+                    if (item.Key == name)
+                    {
+                        //    textBox1.AppendText(item.Value + " : ");
+
+
+                    }
+                }
+
+
+            }
+
+
+            if (alarm == beforalarm && name == beforname)
+            {
+                r++;
+            }
+            else
+            {
+                r = 0;
+            }
+
+
+
+            foreach (var i in Alarms)
+            {
+                if (i.Key == alarm)
+                {
+                    bool f = true;
+                    if (alarm == "11")
+                    {
+                        lioffline.Add(name);
+                        if (r > 2)//میخوای بعد از چه تعداد گفتن وضعیت خاموش دیگه پخش گفتاری اون دستگاه پخش نشه
+                        {
+
+                            f = false;
+                        }
+                    }
+                    if (f)
+                    {
+                        //  textBox1.AppendText(i.Value + " ");
+
+
+                        typewriter.SoundLocation = Environment.CurrentDirectory + @"\wav1\" + (i.Value + ".wav").Trim();
+
+                        typewriter.Play();
+                        Thread.Sleep(2000);
+
+
+                    }
+                }
+            }
+
+            if (name != nextname)
+            {
+                foreach (var item in component)
+                {
+                    if (item.Key == name)
+                    {
+                        typewriter.SoundLocation = Environment.CurrentDirectory + @"\wav1\" + (item.Value + ".wav").Trim();
+                        typewriter.Play();
+                        //    textBox1.AppendText("\n");
+                        Thread.Sleep(3000);
+                        r = 0;
+                        beforpalyname = name;
+
+
+                    }
+                }
+            }
+
+
+            beforalarm = name;
+
+            befortime = System.DateTime.Now;
+        }
+
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            btn.Pulses = 10;
+        }
+
+        private void btn_MouseMove(object sender, MouseEventArgs e)
+        {
+            btn.Pulses = 0;
+        }
+    }
+    public class playlist
+    {
+        public string name { get; set; }
+        public string text { get; set; }
+        public List<string> alarms{ get; set; }
+        public DateTime playtime { get; set; }
+    }
+}
